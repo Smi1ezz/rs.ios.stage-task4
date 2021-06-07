@@ -2,18 +2,19 @@ import Foundation
 
 final class FillWithColor {
     
-    func fillWithColor(_ image: inout [[Int]], _ row: Int, _ column: Int, _ newColor: Int) -> [[Int]] {
+    func fillWithColor(_ image: [[Int]], _ row: Int, _ column: Int, _ newColor: Int) -> [[Int]] {
         if row <= image.count - 1 && row >= 0 && (column <= image[row].count - 1 && column >= 0) && (image.count >= 1) && image[row].count <= 50 && (image[row][column] >= 0) && newColor < 65536 {
             
+            var inoutImage = image
             let oldColour = image[row][column]
             
             guard oldColour != newColor else {
                 return image
             }
             
-            self.fillToRecursion(&image, row, column, oldColour, newColor)
+            self.fillToRecursion(&inoutImage, row, column, oldColour, newColor)
 
-            return image
+            return inoutImage
         } else {
             return image
         }
