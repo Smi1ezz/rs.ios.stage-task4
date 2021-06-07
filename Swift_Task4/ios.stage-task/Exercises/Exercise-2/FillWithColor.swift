@@ -20,7 +20,7 @@ final class FillWithColor {
         }
     }
     
-    func fillToRecursion (_ image: inout [[Int]], _ row: Int, _ column: Int, _ oldColour: Int, _ newColor: Int) -> [[Int]] {
+    func fillToRecursion (_ image: inout [[Int]], _ row: Int, _ column: Int, _ oldColour: Int, _ newColor: Int)  {
         
         if row <= image.count - 1 && row >= 0 && (column <= image[row].count - 1 && column >= 0) && (image.count >= 1) && image[row].count <= 50 && (image[row][column] >= 0) && newColor < 65536 && image[row][column] == oldColour {
             
@@ -29,10 +29,10 @@ final class FillWithColor {
             self.fillToRecursion(&image, row-1, column, oldColour, newColor)
             self.fillToRecursion(&image, row, column+1, oldColour, newColor)
             self.fillToRecursion(&image, row, column-1, oldColour, newColor)
-            return image
+            return
             
         } else {
-            return image
+            return
         }
     }
 }
